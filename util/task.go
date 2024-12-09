@@ -19,7 +19,7 @@ type task struct {
 
 func New(description string) task {
 	taskObj := task{uuid.New(), description, 0, time.Now(), time.Now()}
-	//Write to storage
+
 	return taskObj
 }
 
@@ -46,12 +46,17 @@ func UpdateTask(id string, newVal any, field string) (bool, error){
 		log.Fatal("Invalid uid!")
 	}
 
-	taskObj := reflect.ValueOf(tasks[uid]).Elem()
+	targetTask, exists := tasks[uid]
+	if !exists {
+		log.Fatal("Task not found")
+	}
+
+	taskObj := reflect.ValueOf(&targetTask).Elem()
 
 	targetField := taskObj.FieldByName(field)
 
 	if !targetField.IsValid() {
-		return false, fmt.Errorf("filed %s does not exist", field)
+		return false, fmt.Errorf("field %s does not exist", field)
 	}
 
 	if !targetField.CanSet() {
@@ -60,17 +65,33 @@ func UpdateTask(id string, newVal any, field string) (bool, error){
 
 	if targetField.Type() == reflect.TypeOf("") {
 		targetField.SetString(newVal.(string))
+		targetTask.UpdatedAt = time.Now()
 	} else if targetField.Type() == reflect.TypeOf(1) {
 		newVal, isInt := newVal.(int)
 		if !isInt {
 			log.Fatal("Invalid argument value for the selected field")
 		}
 		targetField.SetInt(int64(newVal))
+		targetTask.UpdatedAt = time.Now()
 	} else {
 		log.Fatal("cannot modify field : ", field)
 	}
 
-	fmt.Println(taskObj.)
+	tasks[uid] = targetTask
+	
+	write(tasks)
 
 	return true, nil
+}
+
+func ListTasks(){
+	tasks, err := getFileContent()
+	
+	if err != nil {
+		log.Fatal("Failed to retrieve tasks from storage!")
+	} 
+
+	for uid, task := range tasks {
+		fmt.Printf("UUID: %v, Task: %+v\n", uid, task.Description)
+	}
 }

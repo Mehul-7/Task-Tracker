@@ -36,7 +36,7 @@ func getFileContent() (map[uuid.UUID]task, error) {
 			return nil, err
 		}
 	}
-
+	
 	return existingTasks, nil
 }
 

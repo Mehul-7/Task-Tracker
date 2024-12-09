@@ -1,0 +1,64 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go workspace file
+go.work
+
+# VSCode directory
+.vscode/
+
+# Compiled output
+/bin
+/build
+
+# Logs
+*.log
+
+# Environment files
+.env
+*.env
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Go module files
+go.sum
+
+# IDE-specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Debugging files
+debug
+debug.test
+
+# Local development configuration
+config.local.yml
+config.local.yaml
