@@ -5,7 +5,6 @@ package cmd
 
 import (
 	"Task-Tracker-CLI/util"
-	"log"
 	"github.com/spf13/cobra"
 )
 
@@ -15,11 +14,13 @@ var listCmd = &cobra.Command{
 	Short: "Gets a list of all",
 	Long: `This command will retreive a list of all tasks irrespective of the status`,
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) > 0 {
-            log.Fatal("Too many arguments")
+		var status string
+
+        if len(args) > 0 {
+            status = args[0]
         }
 
-        util.ListTasks()
+        util.ListTasks(status)
 	},
 }
 

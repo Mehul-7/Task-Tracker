@@ -10,13 +10,13 @@ import (
 var updateCmd = &cobra.Command{
 	Use:   "update",
 	Short: "Update an existing task",
-	Long:  `This command will be used to update an existing task	through its UID`,
+	Long:  `This command will be used to update an existing task through its UID`,
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) < 3 {
+		if len(args) < 2 {
 			log.Fatal("missing arguments!")
 		}
 
-		util.UpdateTask(args[0], args[2], args[1])
+		util.UpdateTask(args[0], args[1])
 	},
 }
 
