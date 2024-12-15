@@ -8,7 +8,7 @@ import (
 )
 
 var updateCmd = &cobra.Command{
-	Use:   "update",
+	Use:   "update <Task UID> <Description>",
 	Short: "Update an existing task",
 	Long:  `This command will be used to update an existing task through its UID`,
 	Run: func(cmd *cobra.Command, args []string) {

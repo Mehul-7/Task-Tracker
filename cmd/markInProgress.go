@@ -12,7 +12,7 @@ import (
 
 // markInProgressCmd represents the markInProgress command
 var markInProgressCmd = &cobra.Command{
-	Use:   "mark-in-progress",
+	Use:   "mark-in-progress <Task UID>",
 	Short: "Change status of task to in-progress",
 	Long: `A longer description that spans multiple lines and likely contains examples and usage of using your command. For example:`,
 	Run: func(cmd *cobra.Command, args []string) {

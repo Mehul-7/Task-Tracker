@@ -12,7 +12,7 @@ import (
 
 // markDoneCmd represents the markDone command
 var markDoneCmd = &cobra.Command{
-	Use:   "mark-done",
+	Use:   "mark-done <Task UID>",
 	Short: "Change the status of task to done",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:`,

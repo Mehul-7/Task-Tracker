@@ -10,7 +10,7 @@ import (
 
 // listCmd represents the list command
 var listCmd = &cobra.Command{
-	Use:   "list",
+	Use:   "list \n  todo\n  in-progress\n  done",
 	Short: "Gets a list of all",
 	Long: `This command will retreive a list of all tasks irrespective of the status`,
 	Run: func(cmd *cobra.Command, args []string) {

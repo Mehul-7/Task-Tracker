@@ -103,10 +103,14 @@ func ListTasks(status string){
 			statusVal = 1
 		case "done":
 			statusVal = 2 
+		case "": //Listing all tasks
+			statusVal = 3
+		default:
+			log.Fatal("Invalid status!")
 	}
 
 	for uid, task := range tasks {
-		if task.Status == statusVal || statusVal == -1 {
+		if task.Status == statusVal || statusVal == 3 {
 			fmt.Printf("UUID: %v, Task: %+v\n", uid, task.Description)
 		}
 	}
